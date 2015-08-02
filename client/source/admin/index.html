@@ -1,1 +1,14 @@
-<h1>Admin</h1>
+<header>
+    <div class="common_logo_header">
+        BarIndex
+    </div>
+    <a ui-sref="admin.bars">Бары</a>
+    <a ui-sref="admin.administrators">Администраторы</a>
+    <div ui-sref="admin.profile" class="control-button-dropdown">
+        <div class="title" >Профиль</div>
+        <div class="items">
+            <a class="item" href="/logout">Выйти</a>
+        </div>
+    </div>
+</header>
+<div class="admin_section" ui-view></div>
