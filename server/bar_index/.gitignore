@@ -11,3 +11,7 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore env vars
+.rbenv_vars
+.rbenv-vars
