@@ -14,6 +14,9 @@ var vendor_js = [
 var source_js = [
     './source/**/*.js'
 ];
+var assets = [
+    './source/assets/*.*'
+];
 var source_styles_less = [
     './source/**/*.less'
 ];
@@ -43,6 +46,10 @@ gulp.task('source_scripts', function(){
         .pipe(concatinator('app.js'))
         .pipe(gulp.dest(target_folder + '/scripts'));
 });
+gulp.task('assets', function(){
+    return gulp.src(assets)
+        .pipe(gulp.dest(target_folder + '/assets'));
+});
 gulp.task('templates', function(){
     return gulp.src(templates)
         .pipe(templateCache({standalone: true}))
@@ -51,12 +58,13 @@ gulp.task('templates', function(){
 });
 gulp.task('styles', function () {
     return gulp.src(source_styles_less)
+        .pipe(concatinator('app.less'))
         .pipe(less())
         .pipe(concatinator('app.css'))
         .pipe(gulp.dest(target_folder + '/styles'));
 });
 
-gulp.task('build', ['templates', 'scripts', 'styles', 'index']);
+gulp.task('build', ['templates', 'scripts', 'styles', 'index', 'assets']);
 gulp.task('scripts', ['vendor_scripts', 'source_scripts']);
 
 

@@ -5,22 +5,30 @@
     display: inline-block;
     position: relative;
     cursor: pointer;
+    transition: none;
+    padding: 10px 20px;
     .title{
 
     }
     .items{
         display: none;
-        background-color: aquamarine;
+        background-color: inherit;
         .item{
 
         }
     }
     &:hover{
+        background-color: lighten(@header-color, 5%);
+
         .items{
+            text-align: center;
             display: block;
             position: absolute;
-            padding: 5px 10px 10px;
+            padding: 10px 10px 15px;
             //top: 0;
+            left: 0;
+            right: 0;
+
         }
     }
 }

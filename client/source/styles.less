@@ -1,15 +1,61 @@
-@primary-color: #ffbe6b;
+@header-color: #463A5F;
+@logo-color: #DCB656;
 @text-color: #262626;
+@primary-color: #46ACCC;
+
+@font-face {
+  font-family: neonFont;
+  src: url("/assets/NEON CLUB MUSIC_bold.otf") format("opentype");
+  box-sizing: border-box;
+}
+
 *{
   font-family: 'helvetica', arial, sans-serif;
   color: @text-color;
+
+}
+.common_logo{
+  font-family: neonFont, 'helvetica', arial, sans-serif;
+  color: @logo-color;
+  &.header{
+    display: inline-block;
+    font-size: 22px;
+    padding: 10px;
+  }
 }
 a{
   text-decoration: none;
   color: darken(@text-color, 20%);
 }
 header{
-  background-color: @primary-color;
+  background-color: @header-color;
+  box-shadow: 0 4px 2px -2px @logo-color;
+  >*{
+    vertical-align: middle;
+  }
+}
+.common_header_item{
+  margin: 0 1%;
+  padding: 10px;
+  *{
+    color: darken(@primary-color,10%);
+    -webkit-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -ms-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+  }
+  color: darken(@primary-color,10%);
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+  &:hover, &>*:hover{
+    //text-shadow: 0 0 20px @primary-color;
+    color: @primary-color;
+    //box-shadow: 0 0 20px black;
+  }
 }
 *[ui-sref]{
   cursor: pointer;
