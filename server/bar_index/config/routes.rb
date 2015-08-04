@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   post 'login'             => 'sessions#create'
   post 'logout'            => 'sessions#destroy'
   
+  resources :account_activations, only: [:edit]
+  post 'account_activations/:id/edit' => 'account_activations#edit'
+  
   match '*path', to: 'application#home', via: :all
   
 end
