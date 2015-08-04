@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   post 'password_resets/:id'          => 'password_resets#update'
   post 'account_activations/:id/edit' => 'account_activations#edit'
   
-  match '*path', to: 'application#home', via: :all
+  # match '*path', to: 'application#home', via: :all
   
 end
