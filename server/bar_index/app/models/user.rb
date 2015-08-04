@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 150 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 6 }, allow_blank: true
+  validates :password, length: { minimum: 6, maximum: 255 }, allow_blank: true
   has_secure_password
   
   # Returns the hash digest of the given string

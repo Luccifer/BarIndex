@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       user.send_activation_email
-      render json: user.to_json
+      render json: nil
     else
       render json: { error: user.errors.full_messages }
     end
