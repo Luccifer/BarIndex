@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   
   resources :account_activations, only: [:edit]
   post 'password_resets/create'       => 'password_resets#create'
-  post 'password_resets/:id/update'   => 'password_resets#update'
+  post 'password_resets/:id'          => 'password_resets#update'
   post 'account_activations/:id/edit' => 'account_activations#edit'
   
   match '*path', to: 'application#home', via: :all
