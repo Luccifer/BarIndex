@@ -6,13 +6,11 @@
 @font-face {
   font-family: neonFont;
   src: url("/assets/NEON CLUB MUSIC_bold.otf") format("opentype");
-  box-sizing: border-box;
 }
 
 *{
   font-family: 'helvetica', arial, sans-serif;
   color: @text-color;
-
 }
 .common_logo{
   font-family: neonFont, 'helvetica', arial, sans-serif;
@@ -60,3 +58,11 @@ header{
 *[ui-sref]{
   cursor: pointer;
 }
+
+/** PureCss customisation */
+.pure-form-stacked{
+  input{
+    width: 100%;
+  }
+}
+

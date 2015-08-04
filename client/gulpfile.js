@@ -12,10 +12,16 @@ var vendor_js = [
     './node_modules/angular-ui-router/build/angular-ui-router.min.js'
 ];
 var source_js = [
-    './source/**/*.js'
+    './source/app/**/init.js',
+    './source/app/**/*.js',
+    './source/app.js'
 ];
 var assets = [
     './source/assets/*.*'
+];
+var vendor_styles_css = [
+    './node_modules/purecss/build/pure.css',
+    './node_modules/purecss/build/grids-responsive-min.css'
 ];
 var source_styles_less = [
     './source/**/*.less'
@@ -26,6 +32,7 @@ var templates = [
 ];
 
 var order = [
+    'styles/vendor.css',
     'styles/app.css',
     'scripts/vendor.js',
     'templates/templates.js',
@@ -56,7 +63,12 @@ gulp.task('templates', function(){
         .pipe(gulp.dest(target_folder + '/templates'));
 
 });
-gulp.task('styles', function () {
+gulp.task('vendor_styles_css', function () {
+    return gulp.src(vendor_styles_css)
+        .pipe(concatinator('vendor.css'))
+        .pipe(gulp.dest(target_folder + '/styles'));
+});
+gulp.task('styles', ['vendor_styles_css'], function () {
     return gulp.src(source_styles_less)
         .pipe(concatinator('app.less'))
         .pipe(less())
