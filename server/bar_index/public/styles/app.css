@@ -1,0 +1,83 @@
+@font-face {
+  font-family: neonFont;
+  src: url("/assets/NEON CLUB MUSIC_bold.otf") format("opentype");
+}
+* {
+  font-family: 'helvetica', arial, sans-serif;
+  color: #262626;
+}
+.common_logo {
+  font-family: neonFont, 'helvetica', arial, sans-serif;
+  color: #dcb656;
+}
+.common_logo.header {
+  display: inline-block;
+  font-size: 22px;
+  padding: 10px;
+}
+a {
+  text-decoration: none;
+  color: #000000;
+}
+header {
+  background-color: #463a5f;
+  box-shadow: 0 4px 2px -2px #dcb656;
+}
+header > * {
+  vertical-align: middle;
+}
+.common_header_item {
+  margin: 0 1%;
+  padding: 10px;
+  color: #3091af;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+}
+.common_header_item * {
+  color: #3091af;
+  -webkit-transition: all 0.5s ease 0s;
+  -moz-transition: all 0.5s ease 0s;
+  -ms-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+}
+.common_header_item:hover,
+.common_header_item > *:hover {
+  color: #46accc;
+}
+*[ui-sref] {
+  cursor: pointer;
+}
+/** PureCss customisation */
+.pure-form-stacked input {
+  width: 100%;
+}
+.control-button-dropdown {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: none;
+  padding: 10px 20px;
+}
+.control-button-dropdown .items {
+  display: none;
+  background-color: inherit;
+}
+.control-button-dropdown:hover {
+  background-color: #52446f;
+}
+.control-button-dropdown:hover .items {
+  text-align: center;
+  display: block;
+  position: absolute;
+  padding: 10px 10px 15px;
+  left: 0;
+  right: 0;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
