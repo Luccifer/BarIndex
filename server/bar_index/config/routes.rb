@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   post 'users'             => 'users#index'
   post 'users/:id'         => 'users#show'
   
-  post 'users/login'             => 'sessions#create'
-  post 'users/logout'            => 'sessions#destroy'
-  post 'users/current_user'      => 'sessions#current'
+  post 'users/login'        => 'sessions#create'
+  post 'users/logout'       => 'sessions#destroy'
+  post 'users/current'      => 'sessions#current'
   
   resources :account_activations, only: [:edit]
   post 'password_resets/create'       => 'password_resets#create'
