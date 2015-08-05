@@ -2,20 +2,20 @@ Rails.application.routes.draw do
 
   root 'application#home'
   
-  post 'users/create'       => 'users#create'
-  post 'users/:id/update'   => 'users#update'
-  post 'users/:id/destroy'  => 'users#destroy'
-  post 'users'              => 'users#index'
-  post 'users/:id'          => 'users#show'
+  post   'users'       => 'users#create'
+  put    'users/:id'   => 'users#update'
+  delete 'users/:id'   => 'users#destroy'
+  get    'users'       => 'users#index'
+  get    'users/:id'   => 'users#show'
   
   post 'users/login'        => 'sessions#create'
   post 'users/logout'       => 'sessions#destroy'
   post 'users/current'      => 'sessions#current'
   
-  resources :account_activations, only: [:edit]
-  post 'password_resets/create'       => 'password_resets#create'
-  post 'password_resets/:id'          => 'password_resets#update'
-  post 'account_activations/:id/edit' => 'account_activations#edit'
+  # resources :account_activations, only: [:edit]
+  post 'password_resets'         => 'password_resets#create'
+  put  'password_resets/:id'     => 'password_resets#update'
+  put  'account_activations/:id' => 'account_activations#update'
   
   # match '*path', to: 'application#home', via: :all
   
