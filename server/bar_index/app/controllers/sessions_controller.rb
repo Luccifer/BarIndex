@@ -19,7 +19,12 @@ class SessionsController < ApplicationController
   
   def destroy
     log_out if logged_in?
-    render text: nil
+    render json: nil
+  end
+  
+  def current
+    user = current_user
+    render json: user.nil? ? nil : user.to_json
   end
   
 end
