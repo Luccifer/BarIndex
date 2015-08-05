@@ -11,8 +11,6 @@ class CreateEvaluations < ActiveRecord::Migration
       t.timestamps null: false
     end
     
-    add_foreign_key :evaluations, :bars
-    add_foreign_key :evaluations, :users
     add_index :evaluations, [:user_id, :bar_id], unique: true
   end
 end

@@ -3,10 +3,6 @@ class BarPhotosController < ApplicationController
   before_action :logged_in_user, only: [:destroy, :create]
   before_action :moderator_user, only: [:destroy, :create]
   
-  def new
-    @bar_photo = BarPhoto.new
-  end
-  
   def show
     render json: BarPhoto.find(params[:id])
   end
