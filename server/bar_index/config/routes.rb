@@ -2,15 +2,15 @@ Rails.application.routes.draw do
 
   root 'application#home'
   
-  post 'users/create'      => 'users#create'
-  post 'users/:id/update'  => 'users#update'
-  post 'users/:id/destroy' => 'users#destroy'
-  post 'users'             => 'users#index'
-  post 'users/:id'         => 'users#show'
+  post 'users/create'       => 'users#create'
+  post 'users/:id/update'   => 'users#update'
+  post 'users/:id/destroy'  => 'users#destroy'
+  post 'users'              => 'users#index'
+  post 'users/:id'          => 'users#show'
   
-  post 'login'             => 'sessions#create'
-  post 'logout'            => 'sessions#destroy'
-  post 'current_user'      => 'sessions#current'
+  post 'users/login'        => 'sessions#create'
+  post 'users/logout'       => 'sessions#destroy'
+  post 'users/current_user' => 'sessions#current'
   
   resources :account_activations, only: [:edit]
   post 'password_resets/create'       => 'password_resets#create'
