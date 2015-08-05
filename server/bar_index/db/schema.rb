@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805202528) do
+ActiveRecord::Schema.define(version: 20150805210556) do
 
   create_table "bar_photos", force: :cascade do |t|
     t.string   "url"
@@ -49,6 +49,33 @@ ActiveRecord::Schema.define(version: 20150805202528) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "bar_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["bar_id", "created_at"], name: "index_comments_on_bar_id_and_created_at"
+  add_index "comments", ["bar_id"], name: "index_comments_on_bar_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "evaluations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "bar_id"
+    t.boolean  "eval_param1"
+    t.boolean  "eval_param2"
+    t.boolean  "eval_param3"
+    t.boolean  "eval_param4"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "evaluations", ["bar_id"], name: "index_evaluations_on_bar_id"
+  add_index "evaluations", ["user_id", "bar_id"], name: "index_evaluations_on_user_id_and_bar_id", unique: true
+  add_index "evaluations", ["user_id"], name: "index_evaluations_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

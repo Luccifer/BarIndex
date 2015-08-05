@@ -6,5 +6,7 @@ class CreateBarPhotos < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    
+    add_foreign_key :bar_photos, :bars
   end
 end

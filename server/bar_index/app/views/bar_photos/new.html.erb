@@ -1,0 +1,9 @@
+<%= form_for(@bar_photo, html: { multipart: true }) do |f| %>
+<div class="field">
+<%= f.text_area :bar_id, placeholder: "bar_id" %>
+</div>
+<%= f.submit "Post", class: "btn btn-primary" %>
+<span class="picture">
+<%= f.file_field :url %>
+</span>
+<% end %>
