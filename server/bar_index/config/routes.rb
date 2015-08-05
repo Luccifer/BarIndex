@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   
   post 'users/login'        => 'sessions#create'
   post 'users/logout'       => 'sessions#destroy'
-  post 'users/current_user' => 'sessions#current'
+  post 'users/current'      => 'sessions#current'
   
   resources :account_activations, only: [:edit]
   post 'password_resets/create'       => 'password_resets#create'
