@@ -1,10 +1,12 @@
 (function() {
-    var module = angular.module('BarIndex.Admin', []);
+    var module = angular.module('BarIndex.Admin', [
+        'BarIndex.Admin.Main'
+    ]);
 
     var options = function ($stateProvider) {
         $stateProvider
             .state('admin', {
-                url: '/admin',
+                abstract: true,
                 templateProvider: ['$templateCache', function ($templateCache) {
                     return $templateCache.get('app/admin/index.html');
                 }]
@@ -32,22 +34,40 @@
 
     module.config(options);
 }());
+(function() {
+    var module = angular.module('BarIndex.Admin.Main', []);
+
+    var options = function ($stateProvider) {
+        $stateProvider
+            .state('admin.main', {
+                url: '/admin',
+                templateProvider: ['$templateCache', function ($templateCache) {
+                    return $templateCache.get('app/admin/frontpage/index.html');
+                }]
+            })
+    };
+
+    options.$inject = ['$stateProvider'];
+
+    module.config(options);
+}());/**
+ * Created by maxim on 05.08.15.
+ */
+
 (function(){
 //
-    var module = angular.module('Common.Door',[]);
+    var module = angular.module('Common.Door',['Common.User']);
     var options = function ($stateProvider) {
         $stateProvider
             .state('door', {
-                url: '/door',
+                //url: '/door',
                 abstract: true,
-                template: '<div ui-view></div>'
-                //    ['$templateCache', function($templateCache){
-                //    return $templateCache.get('app/common/door/index.html');
-                //}]
+                templateProvider: ['$templateCache', function($templateCache){
+                    return $templateCache.get('app/common/door/index.html');
+                }]
             })
-            .state('login', {
+            .state('door.login', {
                 url: '/login',
-                //template: '<div>HELLO</div>'
                 templateProvider: ['$templateCache', function($templateCache){
                     return $templateCache.get('app/common/door/templates/loginView.html');
                 }]
@@ -70,11 +90,34 @@
 (function(){
 
     angular.module('Common.Door').controller('Common.Door.LoginController', controller)
+    controller.$inject = ['UserResource'];
+    function controller(UserResource){
+        var self = this;
+
+        self.template = 'app/common/door/partials/login.html';
+        self.login = login;
+        self.data = {
+            email: null,
+            password: null
+        };
+
+        function login(){
+            UserResource.login.customPOST(self.data).then(function(data){
+                console.log(data);
+            });
+        }
+    }
+
+}());
+
+(function(){
+
+    angular.module('Common.Door').controller('Common.Door.RegistrationController', controller)
     controller.$inject = [];
     function controller(){
         var self = this;
 
-        self.template = 'app/common/door/partials/login.html';
+        self.template = 'app/common/door/partials/registration.html';
     }
 
 }());
@@ -84,10 +127,12 @@
     angular.module('Common.User').factory('UserResource', resource);
     resource.$inject = ['Restangular'];
     function resource(Restangular){
-        var model_name = 'user';
+        var model_name = 'users';
         var methods = {
             model: Restangular.all(model_name),
             login: Restangular.all(model_name).one('login'),
+            //login: Restangular.all('login'),
+            logout: Restangular.all(model_name).one('logout'),
             registration: Restangular.all(model_name).one('registration')
         } ;
         return methods;
@@ -98,7 +143,8 @@
 var app = angular.module('BarIndex', [
     'templates',
     'ui.router',
-    //'Common.User',
+    'restangular',
+    'Common.User',
     'Common.Door',
     'BarIndex.Main',
     'BarIndex.Admin'

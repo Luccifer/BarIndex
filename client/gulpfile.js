@@ -8,8 +8,10 @@ var less = require('gulp-less');
 
 var target_folder = '../server/bar_index/public';
 var vendor_js = [
+    './node_modules/underscore/underscore-min.js',
     './node_modules/angular/angular.js',
-    './node_modules/angular-ui-router/build/angular-ui-router.min.js'
+    './node_modules/angular-ui-router/build/angular-ui-router.min.js',
+    './node_modules/restangular/dist/restangular.min.js'
 ];
 var source_js = [
     './source/app/**/init.js',
@@ -27,7 +29,7 @@ var source_styles_less = [
     './source/**/*.less'
 ];
 var templates = [
-  './source/index.html',
+    './source/index.html',
     './source/**/*.html'
 ];
 
@@ -79,16 +81,23 @@ gulp.task('styles', ['vendor_styles_css'], function () {
 gulp.task('build', ['templates', 'scripts', 'styles', 'index', 'assets']);
 gulp.task('scripts', ['vendor_scripts', 'source_scripts']);
 
+var api_endpoints = ['users'];
+var backend_url = 'http://avkorneenkov.net/';
 
 gulp.task('run', ['build', 'watch'], function() {
+    var proxies = [];
+    for (var i in api_endpoints){
+        proxies.push({
+            source: '/'+api_endpoints[i],
+            target: backend_url + api_endpoints[i]
+        })
+    }
     gulp.src(target_folder)
         .pipe(webserver({
             livereload: true,
-            open: true
-            //proxies: [{
-            //    source: '/',
-            //    //target: 'http://188.226.209.208'
-            //}]
+            open: true,
+            fallback: 'index.html',
+            proxies: proxies
         }));
 });
 gulp.task('watch', function(){

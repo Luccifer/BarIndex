@@ -1,7 +1,9 @@
 @header-color: #463A5F;
 @logo-color: #DCB656;
-@text-color: #262626;
-@primary-color: #46ACCC;
+@text-color: #3F3B4E;
+@primary-color: @header-color;
+@secondary-color: @header-color;
+@background-color: #EAF5FF;
 
 @font-face {
   font-family: neonFont;
@@ -25,11 +27,19 @@ a{
   text-decoration: none;
   color: darken(@text-color, 20%);
 }
+h2{
+  margin: 0.4em 0;
+  font-size: 1.5em;
+}
+body{
+  background-color: @background-color;
+}
 header{
   background-color: @header-color;
   box-shadow: 0 4px 2px -2px @logo-color;
   >*{
     vertical-align: middle;
+    display: inline-block;
   }
 }
 .common_header_item{
@@ -58,11 +68,36 @@ header{
 *[ui-sref]{
   cursor: pointer;
 }
+.center-block{
+  margin: 0 auto;
+  display: block;
+}
+.center-text{
+  text-align: center;
+}
+.button-primary {
+  background-color: @primary-color;
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.button-secondary {
+  background-color: @secondary-color;
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
 
 /** PureCss customisation */
+.pure-g{
+  letter-spacing: normal;
+}
 .pure-form-stacked{
   input{
     width: 100%;
   }
+}
+.pure-button[disabled]{
+  opacity: 0.7;
 }
 
