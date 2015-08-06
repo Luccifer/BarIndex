@@ -2,7 +2,8 @@
 var app = angular.module('BarIndex', [
     'templates',
     'ui.router',
-    //'Common.User',
+    'restangular',
+    'Common.User',
     'Common.Door',
     'BarIndex.Main',
     'BarIndex.Admin'
