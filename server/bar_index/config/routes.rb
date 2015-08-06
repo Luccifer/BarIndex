@@ -47,6 +47,4 @@ Rails.application.routes.draw do
   delete 'evaluations/:id/update'         => 'evaluations#update'
   get    'evaluations/:id'                => 'evaluations#show'
   
-  # match '*path', to: 'application#home', via: :all
-  
 end
