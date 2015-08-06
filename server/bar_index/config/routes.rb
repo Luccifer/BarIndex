@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   
   # EVALUATION METHODS
   post   'evaluations'                    => 'evaluations#create'
-  delete 'evaluations/:id/update'         => 'evaluations#update'
+  put    'evaluations/:id/update'         => 'evaluations#update'
   get    'evaluations/:id'                => 'evaluations#show'
   
 end
