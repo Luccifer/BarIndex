@@ -16,5 +16,19 @@ class ApplicationController < ActionController::Base
         render json: { error: "forbidden" }
       end
     end
+    
+    # Confirms an admin user.
+    def admin_user
+      if current_user.permission_level != 1
+        render json: { error: "forbidden" }
+      end
+    end
+    
+    # Confirms an moderator user.
+    def moderator_user
+      if current_user.permission_level == 3 
+        render json: { error: "forbidden" }
+      end
+    end
   
 end
