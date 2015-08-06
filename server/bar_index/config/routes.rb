@@ -15,11 +15,11 @@ Rails.application.routes.draw do
   
   # resources :account_activations, only: [:edit]
   # PASSWORD RESET METHODS
-  post   'password_resets'                => 'password_resets#create'
-  put    'password_resets/:id/update'     => 'password_resets#update'
+  post   'users/reset_password'           => 'password_resets#create'
+  put    'users/:id/reset_password'       => 'password_resets#update'
   
   # ACCOUNT ACTIVATION METHODS
-  put    'account_activations/:id/update' => 'account_activations#update'
+  put    'users/:id/activate'             => 'account_activations#update'
   
   # BAR METHODS
   post   'bars'                           => 'bars#create'
