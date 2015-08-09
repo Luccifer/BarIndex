@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20150805210556) do
 
   create_table "bars", force: :cascade do |t|
     t.string   "name"
+    t.float    "lat"
+    t.float    "lng"
     t.text     "description"
     t.string   "website_url"
     t.string   "social_url_vk"

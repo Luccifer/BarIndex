@@ -2,6 +2,8 @@ class CreateBars < ActiveRecord::Migration
   def change
     create_table :bars do |t|
       t.string :name
+      t.float :lat
+      t.float :lng
       t.text :description
       t.string :website_url
       t.string :social_url_vk
