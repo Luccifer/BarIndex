@@ -3,10 +3,13 @@
     angular.module('Common.Bar').factory('BarResource', resource);
     resource.$inject = ['Restangular'];
     function resource(Restangular){
-        var model_name = 'bars';
+        var model_name = 'api/bars';
         //Restangular.addResponseInterceptor(function(data, operation, what, url, response, deferred){
         //    console.log(response);
         //    console.log(operation);
+        //    console.log(url);
+        //    console.log(what);
+        //    console.log(deferred);
         //    return data;
         //});
         var methods = {

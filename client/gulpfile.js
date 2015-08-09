@@ -18,9 +18,11 @@ var source_js = [
     './source/app/**/*.js',
     './source/app.js'
 ];
+var fonts = [
+    './node_modules/font-awesome/fonts/*.*'
+];
 var assets = [
-    './source/assets/*.*',
-    './node_modules/font-awesome/fonts/FontAwesome.otf'
+    './source/assets/*.*'
 ];
 var vendor_styles_css = [
     './node_modules/purecss/build/pure.css',
@@ -57,10 +59,10 @@ gulp.task('source_scripts', function(){
         .pipe(concatinator('app.js'))
         .pipe(gulp.dest(target_folder + '/scripts'));
 });
-//gulp.task('fonts', function(){
-//    return gulp.src(fonts)
-//        .pipe(gulp.dest(target_folder + '/assets'));
-//});
+gulp.task('fonts', function(){
+    return gulp.src(fonts)
+        .pipe(gulp.dest(target_folder + '/fonts'));
+});
 gulp.task('assets', function(){
     return gulp.src(assets)
         .pipe(gulp.dest(target_folder + '/assets'));
@@ -84,10 +86,10 @@ gulp.task('styles', ['vendor_styles_css'], function () {
         .pipe(gulp.dest(target_folder + '/styles'));
 });
 
-gulp.task('build', ['templates', 'scripts', 'styles', 'index', 'assets']);
+gulp.task('build', ['templates', 'scripts', 'styles', 'index', 'assets', 'fonts']);
 gulp.task('scripts', ['vendor_scripts', 'source_scripts']);
 
-var api_endpoints = ['users'];
+var api_endpoints = ['api'];
 var backend_url = 'http://avkorneenkov.net/';
 
 gulp.task('run', ['build', 'watch'], function() {

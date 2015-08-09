@@ -172,6 +172,7 @@
 
         self.bars = [];
         BarResource.model.getList().then(function(data){
+            console.log(data.plain());
             self.bars = data.plain();
         },function(){
             console.log('Server error');
@@ -206,10 +207,13 @@
     angular.module('Common.Bar').factory('BarResource', resource);
     resource.$inject = ['Restangular'];
     function resource(Restangular){
-        var model_name = 'bars';
+        var model_name = 'api/bars';
         //Restangular.addResponseInterceptor(function(data, operation, what, url, response, deferred){
         //    console.log(response);
         //    console.log(operation);
+        //    console.log(url);
+        //    console.log(what);
+        //    console.log(deferred);
         //    return data;
         //});
         var methods = {
@@ -291,7 +295,7 @@
     angular.module('Common.User').factory('UserResource', resource);
     resource.$inject = ['Restangular'];
     function resource(Restangular){
-        var model_name = 'users';
+        var model_name = 'api/users';
         var methods = {
             model: Restangular.all(model_name),
             login: Restangular.all(model_name).one('login'),

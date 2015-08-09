@@ -198,6 +198,7 @@ header > * {
 .common-barlist-add[disabled] {
   background-color: #221f29;
   pointer-events: none;
+  cursor: blocked;
 }
 .admin-barlist-wrapper {
   position: absolute;

@@ -12,6 +12,7 @@
 
         self.bars = [];
         BarResource.model.getList().then(function(data){
+            console.log(data.plain());
             self.bars = data.plain();
         },function(){
             console.log('Server error');
