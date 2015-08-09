@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   
   def update
     user = User.find(params[:id])
-    if user.update_attributes(user_params_update)
+    if user.update_attributes(user_params_update(user))
       render json: user.to_json
     else
       render json: { error: user.errors.full_messages }
@@ -44,14 +44,18 @@ class UsersController < ApplicationController
                                    :password_confirmation, :description)
     end
     
-    def user_params_update
-      params.require(:user).permit(:name, :description)
+    def user_params_update(user)
+      if user.permission_level != 1
+        params.require(:user).permit(:name, :description)
+      else
+        params.require(:user).permit(:name, :description, :permission_level)
+      end
     end
     
     # Confirms the correct user.
     def correct_user
       @user = User.find(params[:id])
-      unless current_user?(@user)
+      unless current_user?(@user) || current_user.permission_level == 1
         render json: { error: "forbidden" }
       end
     end
