@@ -2,9 +2,16 @@
   font-family: neonFont;
   src: url("/assets/NEON CLUB MUSIC_bold.otf") format("opentype");
 }
+@font-face {
+  font-family: FontAwesome;
+  src: url("/assets/FontAwesome.otf") format("opentype");
+}
 * {
   font-family: 'helvetica', arial, sans-serif;
-  color: #3f3b4e;
+}
+html,
+body {
+  height: 100%;
 }
 .common_logo {
   font-family: neonFont, 'helvetica', arial, sans-serif;
@@ -26,9 +33,20 @@ h2 {
 body {
   background-color: #eaf5ff;
 }
+body > *[ui-view] > *[ui-view] {
+  position: absolute;
+  top: 68px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 header {
-  background-color: #463a5f;
+  background-color: #3a3546;
   box-shadow: 0 4px 2px -2px #dcb656;
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  right: 0;
 }
 header > * {
   vertical-align: middle;
@@ -37,7 +55,7 @@ header > * {
 .common_header_item {
   margin: 0 1%;
   padding: 10px;
-  color: #2f273f;
+  color: #32b7d8;
   -webkit-transition: all 0.5s ease 0s;
   -moz-transition: all 0.5s ease 0s;
   -ms-transition: all 0.5s ease 0s;
@@ -45,7 +63,7 @@ header > * {
   transition: all 0.5s ease 0s;
 }
 .common_header_item * {
-  color: #2f273f;
+  color: #32b7d8;
   -webkit-transition: all 0.5s ease 0s;
   -moz-transition: all 0.5s ease 0s;
   -ms-transition: all 0.5s ease 0s;
@@ -54,9 +72,12 @@ header > * {
 }
 .common_header_item:hover,
 .common_header_item > *:hover {
-  color: #463a5f;
+  color: #5dc6e0;
 }
 *[ui-sref] {
+  cursor: pointer;
+}
+*[ng-click] {
   cursor: pointer;
 }
 .center-block {
@@ -67,13 +88,13 @@ header > * {
   text-align: center;
 }
 .button-primary {
-  background-color: #463a5f;
+  background-color: #3a3546;
   color: white;
   border-radius: 4px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 .button-secondary {
-  background-color: #463a5f;
+  background-color: #3a3546;
   color: white;
   border-radius: 4px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -100,7 +121,7 @@ header > * {
   background-color: inherit;
 }
 .control-button-dropdown:hover {
-  background-color: #52446f;
+  background-color: #464055;
 }
 .control-button-dropdown:hover .items {
   text-align: center;
@@ -110,9 +131,79 @@ header > * {
   left: 0;
   right: 0;
 }
-* {
-  margin: 0;
-  padding: 0;
+.admin-section {
+  position: absolute;
+  top: 68px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.common-barlist-wrapper {
+  background-color: #3a3546;
+  color: #5dc6e0;
+}
+.common-barlist-wrapper .common-barlist-item {
+  position: relative;
+}
+.common-barlist-wrapper .common-barlist-item > * {
+  display: inline-block;
+}
+.common-barlist-wrapper .common-barlist-item .common-barlist-item-image {
+  height: 0;
+  width: 30%;
+  padding-bottom: 30%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.common-barlist-wrapper .common-barlist-item .common-barlist-item-description {
+  width: 65%;
+}
+.common-barlist-wrapper .common-barlist-item .common-barlist-item-description .common-barlist-item-title {
+  font-size: 140%;
+}
+.common-barlist-wrapper .common-barlist-item .common-barlist-item-description .common-barlist-item-evals {
+  position: absolute;
+  bottom: 0;
+  left: 30%;
+  right: 0;
+}
+.common-barlist-wrapper .common-barlist-item .common-barlist-item-description .common-barlist-item-eval {
+  width: 25%;
+  display: inline-block;
+  font-size: 2em;
+  text-align: center;
+}
+.common-bar-eval-gold i {
+  color: gold;
+}
+.common-bar-eval-silver i {
+  color: silver;
+}
+.common-barlist-add {
+  padding: 10px 0;
+  font-size: 350%;
+  background-color: #524b63;
+  transition: all 1s;
+}
+.common-barlist-add i {
+  color: #44d350;
+  transition: all 1s;
+}
+.common-barlist-add:hover {
+  background-color: #97e79d;
+}
+.common-barlist-add:hover i {
+  color: #524b63;
+}
+.common-barlist-add[disabled] {
+  background-color: #221f29;
+  pointer-events: none;
+}
+.admin-barlist-wrapper {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  background-color: #3a3546;
 }
 .common-door-loginview input,
 .common-door-loginview button {

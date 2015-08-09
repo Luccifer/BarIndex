@@ -1,0 +1,63 @@
+.common-barlist-wrapper{
+  background-color: @header-color;
+  color: @primary-text-color;
+  .common-barlist-item{
+
+    position: relative;
+    >*{
+      display: inline-block;
+    }
+    .common-barlist-item-image{
+      height: 0;
+      width: 30%;
+      padding-bottom: 30%;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .common-barlist-item-description{
+      width: 65%;
+      .common-barlist-item-title{
+        font-size: 140%;
+      }
+      .common-barlist-item-evals{
+        position: absolute;
+        bottom:0;
+        left:30%;
+        right:0;
+      }
+      .common-barlist-item-eval{
+        width: 25%;
+        display: inline-block;
+        font-size: 2em;
+        text-align: center;
+      }
+    }
+  }
+}
+.common-bar-eval-gold i{
+  color: gold;
+}
+.common-bar-eval-silver i{
+  color: silver;
+}
+.common-barlist-add{
+  padding: 10px 0;
+  font-size: 350%;
+  background-color: lighten(@header-color,10%);
+  transition: all 1s;
+  i{
+    color: darken(@success-color,5%);
+    transition: all 1s;
+  }
+  &:hover{
+    background-color: lighten(@success-color,15%);
+    i{
+      color: lighten(@header-color, 10%);
+    }
+  }
+  &[disabled]{
+    background-color: darken(@header-color, 10%);//rgb(251, 251, 137);
+    pointer-events: none;
+    cursor: blocked;
+  }
+}

@@ -1,8 +1,8 @@
 <div class="common-door-registration">
     <form class="pure-form">
-        <input type="email" placeholder="E-mail"/>
-        <input type="password" placeholder="Пароль"/>
-        <input type="text" lang="en" placeholder="Имя/никнэйм"/>
-        <button class="pure-button button-primary">Зарегистрироваться</button>
+        <input type="email" placeholder="E-mail" ng-model="ctrl.data.email"/>
+        <input type="password" placeholder="Пароль" ng-model="ctrl.data.password"/>
+        <input type="text" lang="en" placeholder="Имя/никнэйм" ng-model="ctrl.data.name"/>
+        <button class="pure-button button-primary" ng-click="ctrl.registration()">Зарегистрироваться</button>
     </form>
 </div>

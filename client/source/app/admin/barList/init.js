@@ -1,12 +1,12 @@
 (function() {
-    var module = angular.module('BarIndex.Admin.Main', []);
+    var module = angular.module('BarIndex.Admin.BarList', []);
 
     var options = function ($stateProvider) {
         $stateProvider
-            .state('admin.main', {
-                url: '/main',
+            .state('admin.bars', {
+                url: '/bars',
                 templateProvider: ['$templateCache', function ($templateCache) {
-                    return $templateCache.get('app/admin/frontpage/index.html');
+                    return $templateCache.get('app/admin/barList/templates/index.html');
                 }]
             })
     };
@@ -14,6 +14,4 @@
     options.$inject = ['$stateProvider'];
 
     module.config(options);
-}());/**
- * Created by maxim on 05.08.15.
- */
+}());

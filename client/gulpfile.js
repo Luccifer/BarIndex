@@ -19,11 +19,13 @@ var source_js = [
     './source/app.js'
 ];
 var assets = [
-    './source/assets/*.*'
+    './source/assets/*.*',
+    './node_modules/font-awesome/fonts/FontAwesome.otf'
 ];
 var vendor_styles_css = [
     './node_modules/purecss/build/pure.css',
-    './node_modules/purecss/build/grids-responsive-min.css'
+    './node_modules/purecss/build/grids-responsive-min.css',
+    './node_modules/font-awesome/css/font-awesome.min.css'
 ];
 var source_styles_less = [
     './source/**/*.less'
@@ -55,6 +57,10 @@ gulp.task('source_scripts', function(){
         .pipe(concatinator('app.js'))
         .pipe(gulp.dest(target_folder + '/scripts'));
 });
+//gulp.task('fonts', function(){
+//    return gulp.src(fonts)
+//        .pipe(gulp.dest(target_folder + '/assets'));
+//});
 gulp.task('assets', function(){
     return gulp.src(assets)
         .pipe(gulp.dest(target_folder + '/assets'));

@@ -1,0 +1,20 @@
+<div class="common-barlist">
+    <div class="common-barlist-filter">
+        <h2>Фильтр</h2>
+    </div>
+    <div ng-click="ctrlBarList.onBar(bar.id)" class="common-barlist-item" ng-repeat="bar in ctrlBarList.bars">
+        <div class="common-barlist-item-image pure-u-1-3 pure-img" style="background-image:url({{bar.image}});" alt="{{bar.title}}"></div>
+        <div class="common-barlist-item-description">
+            <div class="common-barlist-item-title">
+                {{bar.title}}
+            </div>
+            <div class="common-barlist-item-evals">
+                <div class="common-barlist-item-eval" ng-repeat="eval in bar.evals">
+                    <div ng-show="eval.share >= 0.7" class="common-bar-eval-gold"><i class="fa fa-star"></i></div>
+                    <div ng-show="eval.share > 0.5 && eval.share < 0.7" class="common-bar-eval-silver"><i class="fa fa-star"></i></div>
+                    <div ng-show="eval.share <= 0.5" class="common-bar-eval-silver"><i class="fa fa-star-o"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
