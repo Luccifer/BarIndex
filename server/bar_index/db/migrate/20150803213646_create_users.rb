@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.text :description
       t.string :photo_url
-      t.integer :permission_level, default: 3
+      t.integer :permission_level, default: 1
       t.integer :vk_id
       t.string :password_digest
       t.string :remember_digest

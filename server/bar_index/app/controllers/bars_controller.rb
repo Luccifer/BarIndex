@@ -22,7 +22,7 @@ class BarsController < ApplicationController
   
   def destroy
     Bar.find(params[:id]).destroy
-    render text: nil
+    render json: nil
   end
   
   def update
