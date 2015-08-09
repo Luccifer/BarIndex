@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
+      user.activate # TODO: remove
       user.send_activation_email
       render json: nil
     else
