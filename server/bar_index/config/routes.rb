@@ -3,48 +3,48 @@ Rails.application.routes.draw do
   root 'application#home'
   
   # USER METHODS
-  post   'users/login'                    => 'sessions#create'
-  delete 'users/logout'                   => 'sessions#destroy'
-  get    'users/current'                  => 'sessions#current'
+  post   'api/users/login'                    => 'sessions#create'
+  delete 'api/users/logout'                   => 'sessions#destroy'
+  get    'api/users/current'                  => 'sessions#current'
   
-  post   'users'                          => 'users#create'
-  put    'users/:id/update'               => 'users#update'
-  delete 'users/:id/destroy'              => 'users#destroy'
-  get    'users'                          => 'users#index'
-  get    'users/:id'                      => 'users#show'
+  post   'api/users'                          => 'users#create'
+  put    'api/users/:id/update'               => 'users#update'
+  delete 'api/users/:id/destroy'              => 'users#destroy'
+  get    'api/users'                          => 'users#index'
+  get    'api/users/:id'                      => 'users#show'
   
   # resources :account_activations, only: [:edit]
   # PASSWORD RESET METHODS
-  post   'users/reset_password'           => 'password_resets#create'
-  put    'users/:id/reset_password'       => 'password_resets#update'
+  post   'api/users/reset_password'           => 'password_resets#create'
+  put    'api/users/:id/reset_password'       => 'password_resets#update'
   
   # ACCOUNT ACTIVATION METHODS
-  put    'users/:id/activate'             => 'account_activations#update'
+  put    'api/users/:id/activate'             => 'account_activations#update'
   
   # BAR METHODS
-  post   'bars'                           => 'bars#create'
-  put    'bars/:id/update'                => 'bars#update'
-  delete 'bars/:id/destroy'               => 'bars#destroy'
-  get    'bars'                           => 'bars#index'
-  get    'bars/:id'                       => 'bars#show'
+  post   'api/bars'                           => 'bars#create'
+  put    'api/bars/:id/update'                => 'bars#update'
+  delete 'api/bars/:id/destroy'               => 'bars#destroy'
+  get    'api/bars'                           => 'bars#index'
+  get    'api/bars/:id'                       => 'bars#show'
   
-  get    'bars/:id/photos'                => 'bars#bar_photos'
-  get    'bars/:id/comments'              => 'bars#comments'
-  get    'bars/:id/evaluations'           => 'bars#evaluations'
+  get    'api/bars/:id/photos'                => 'bars#bar_photos'
+  get    'api/bars/:id/comments'              => 'bars#comments'
+  get    'api/bars/:id/evaluations'           => 'bars#evaluations'
   
   # BAR_PHOTOS METHODS
-  post   'bar_photos'                     => 'bar_photos#create'
-  delete 'bar_photos/:id/destroy'         => 'bar_photos#destroy'
-  get    'bar_photos/:id'                 => 'bar_photos#show'
+  post   'api/bar_photos'                     => 'bar_photos#create'
+  delete 'api/bar_photos/:id/destroy'         => 'bar_photos#destroy'
+  get    'api/bar_photos/:id'                 => 'bar_photos#show'
   
   # COMMENT METHODS
-  post   'comments'                       => 'comments#create'
-  delete 'comments/:id/destroy'           => 'comments#destroy'
-  get    'comments/:id'                   => 'comments#show'
+  post   'api/comments'                       => 'comments#create'
+  delete 'api/comments/:id/destroy'           => 'comments#destroy'
+  get    'api/comments/:id'                   => 'comments#show'
   
   # EVALUATION METHODS
-  post   'evaluations'                    => 'evaluations#create'
-  put    'evaluations/:id/update'         => 'evaluations#update'
-  get    'evaluations/:id'                => 'evaluations#show'
+  post   'api/evaluations'                    => 'evaluations#create'
+  put    'api/evaluations/:id/update'         => 'evaluations#update'
+  get    'api/evaluations/:id'                => 'evaluations#show'
   
 end
