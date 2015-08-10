@@ -5,12 +5,12 @@ class Bar < ActiveRecord::Base
   has_many :evaluations, dependent: :destroy
   
   validates :name, presence: true, length: { maximum: 150 }
-  validates :description, presence: true
-  validates :price_vodka, presence: true
-  validates :price_long, presence: true
-  validates :price_shot, presence: true
+  # validates :description, presence: true
+  # validates :price_vodka, presence: true
+  # validates :price_long, presence: true
+  # validates :price_shot, presence: true
   
-  before_save :set_price_avg
+  # before_save :set_price_avg
 
   
   # Calculate price_avg

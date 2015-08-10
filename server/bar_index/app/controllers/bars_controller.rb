@@ -22,7 +22,7 @@ class BarsController < ApplicationController
   
   def destroy
     Bar.find(params[:id]).destroy
-    render text: nil
+    render json: nil
   end
   
   def update
@@ -52,7 +52,9 @@ class BarsController < ApplicationController
       params.require(:bar).permit(:name, :price_vodka, :price_long,
                                   :price_shot, :description, :website_url,
                                   :social_url_fb, :social_url_vk,
-                                  :social_url_twtr, :social_url_inst)
+                                  :social_url_twtr, :social_url_inst, 
+                                  # TODO: change
+                                  :lat, :lng, :price_avg)
     end
   
 end
