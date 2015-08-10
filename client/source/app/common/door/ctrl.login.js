@@ -1,8 +1,8 @@
 (function(){
 
     angular.module('Common.Door').controller('Common.Door.LoginController', controller);
-    controller.$inject = ['UserResource'];
-    function controller(UserResource){
+    controller.$inject = ['UserResource', '$state'];
+    function controller(UserResource, $state){
         var self = this;
 
         self.template = 'app/common/door/partials/login.html';
@@ -13,7 +13,7 @@
         };
 
         function login(){
-            UserResource.login.customPOST({user:self.data}).then(function(data){
+            UserResource.login.customPOST({session:self.data}).then(function(data){
                 if (data.error) alert(data.error);
                 else $state.go('admin.main');
             },function(){

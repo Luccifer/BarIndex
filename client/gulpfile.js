@@ -8,6 +8,7 @@ var less = require('gulp-less');
 
 var target_folder = '../server/bar_index/public';
 var vendor_js = [
+    './node_modules/jquery/dist/jquery.min.js',
     './node_modules/underscore/underscore-min.js',
     './node_modules/angular/angular.js',
     './node_modules/angular-ui-router/build/angular-ui-router.min.js',

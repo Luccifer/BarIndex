@@ -20,6 +20,10 @@
             self.data.password_confirmation = self.data.password;
             console.log(self.data);
             UserResource.model.customPOST({user:self.data}).then(function(data){
+                if (data === undefined) {
+                    alert('Всё плохо, ничего не работает... Или всё хорошо, и проверяй почту. Особенно папку Спам"');
+                    $state.go('admin.main')
+                }
                 if (data.error) alert(data.error);
                 else $state.go('admin.main');
             },function(){

@@ -138,12 +138,23 @@ header > * {
   left: 0;
   right: 0;
 }
+#admin-map {
+  min-height: 300px;
+  height: 100%;
+  position: fixed;
+}
 .common-barlist-wrapper {
   background-color: #3a3546;
   color: #5dc6e0;
 }
 .common-barlist-wrapper .common-barlist-item {
+  background-color: #464055;
+  margin: 5px;
   position: relative;
+}
+.common-barlist-wrapper .common-barlist-item[disabled] {
+  background-color: #221f29;
+  pointer-events: none;
 }
 .common-barlist-wrapper .common-barlist-item > * {
   display: inline-block;
@@ -154,6 +165,7 @@ header > * {
   padding-bottom: 30%;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: #2e2a37;
 }
 .common-barlist-wrapper .common-barlist-item .common-barlist-item-description {
   width: 65%;
@@ -168,7 +180,7 @@ header > * {
   right: 0;
 }
 .common-barlist-wrapper .common-barlist-item .common-barlist-item-description .common-barlist-item-eval {
-  width: 25%;
+  width: 24%;
   display: inline-block;
   font-size: 2em;
   text-align: center;
@@ -198,13 +210,19 @@ header > * {
 .common-barlist-add[disabled] {
   background-color: #221f29;
   pointer-events: none;
-  cursor: blocked;
 }
 .admin-barlist-wrapper {
   position: absolute;
   bottom: 0;
   top: 0;
   background-color: #3a3546;
+  overflow-y: scroll;
+}
+.admin-barlist-section {
+  overflow-y: scroll;
+  position: absolute;
+  bottom: 0;
+  top: 0;
 }
 .common-door-loginview input,
 .common-door-loginview button {

@@ -1,1 +1,47 @@
-<h1>Добавить бар</h1>
+<h1 class="common-section-header">Добавить бар</h1>
+<div class="pure-g">
+    <form class="pure-form pure-form-aligned pure-u-1 pure-u-sm-1-2">
+        <fieldset>
+            <div class="pure-control-group">
+                <label for="name">Название бара (*)</label>
+                <input id="name" type="text" placeholder="Название" ng-model="ctrl.data.name">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="address">Адрес бара</label>
+                <input id="address" type="text" placeholder="Адрес" ng-model="ctrl.data.address">
+            </div>
+
+
+            <div class="pure-control-group">
+                <label>&nbsp;</label>
+                <button type="submit" class="pure-button button-primary" ng-click="ctrl.onAddressCheck()">Проверить</button>
+            </div>
+            <div class="pure-control-group">
+                <label for="description">Описание</label>
+                <textarea id='description' placeholder="Описание" ng-model="ctrl.data.description"></textarea>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="price_1">Цена водки</label>
+                <input id="price_1" type="number" placeholder="Цена" ng-model="ctrl.data.price_vodka">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="price_2">Цена шота</label>
+                <input id="price_2" type="number" placeholder="Цена" ng-model="ctrl.data.price_shot">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="price_3">Цена лонга</label>
+                <input id="price_3" type="number" placeholder="Цена" ng-model="ctrl.data.price_long">
+            </div>
+
+            <div class="pure-controls">
+                <label>&nbsp;</label>
+                <button type="submit" class="pure-button button-primary" ng-click="ctrl.onAdd()" ng-disabled="ctrl.isAddDisabled">Добавить</button>
+            </div>
+        </fieldset>
+    </form>
+    <div id="admin-map" class="pure-u-1 pure-u-sm-1-2"></div>
+</div>

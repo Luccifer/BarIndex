@@ -1,9 +1,10 @@
 (function(){
 
     angular.module('Common.Bar').factory('BarResource', resource);
-    resource.$inject = ['Restangular'];
-    function resource(Restangular){
+    resource.$inject = ['$rootScope', 'Restangular'];
+    function resource($rootScope, Restangular){
         var model_name = 'api/bars';
+        var api_endpoint = Restangular.all(model_name);
         //Restangular.addResponseInterceptor(function(data, operation, what, url, response, deferred){
         //    console.log(response);
         //    console.log(operation);
@@ -12,18 +13,29 @@
         //    console.log(deferred);
         //    return data;
         //});
+
         var methods = {
-            model: Restangular.all(model_name),
+            model: api_endpoint,
+            list: [],
+            updateList: updateList,
             photos: function(id){
-                return Restangular.all(model_name).one(id).one('photos');
+                return api_endpoint.one(id).one('photos');
             },
             comments: function(id){
-                return Restangular.all(model_name).one(id).one('comments');
+                return api_endpoint.one(id).one('comments');
             },
             evaluations: function(id){
-                return Restangular.all(model_name).one(id).one('evaluations');
+                return api_endpoint.one(id).one('evaluations');
             }
-        } ;
+        };
         return methods;
+
+
+        function updateList(){
+            api_endpoint.getList().then(function(data){
+                methods.list = data.plain();
+                $rootScope.$broadcast('BarResource:updated', methods.list);
+            })
+        }
     }
 }());

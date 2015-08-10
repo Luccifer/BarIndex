@@ -16,7 +16,8 @@
     "purecss": "0.6.0",
     "lodash": "3.10.1",
     "underscore": "1.8.3",
-    "font-awesome": "4.4.0"
+    "font-awesome": "4.4.0",
+    "jquery": "2.1.4"
   },
   "devDependencies": {
   },

@@ -2,8 +2,13 @@
   background-color: @header-color;
   color: @primary-text-color;
   .common-barlist-item{
-
+    background-color: lighten(@header-color,5%);
+    margin: 5px;
     position: relative;
+    &[disabled]{
+      background-color: darken(@header-color, 10%);//rgb(251, 251, 137);
+      pointer-events: none;
+    }
     >*{
       display: inline-block;
     }
@@ -13,6 +18,7 @@
       padding-bottom: 30%;
       background-size: cover;
       background-repeat: no-repeat;
+      background-color: darken(@header-color,5%);
     }
     .common-barlist-item-description{
       width: 65%;
@@ -26,7 +32,7 @@
         right:0;
       }
       .common-barlist-item-eval{
-        width: 25%;
+        width: 24%;
         display: inline-block;
         font-size: 2em;
         text-align: center;
@@ -58,6 +64,5 @@
   &[disabled]{
     background-color: darken(@header-color, 10%);//rgb(251, 251, 137);
     pointer-events: none;
-    cursor: blocked;
   }
 }

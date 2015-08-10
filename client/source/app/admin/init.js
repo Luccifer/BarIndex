@@ -11,6 +11,8 @@
             .state('admin', {
                 url: '/admin',
                 abstract: true,
+                controller: 'BarIndex.Admin.AdminController',
+                controllerAs: 'AdminCtrl',
                 templateProvider: ['$templateCache', function ($templateCache) {
                     return $templateCache.get('app/admin/index.html');
                 }]
