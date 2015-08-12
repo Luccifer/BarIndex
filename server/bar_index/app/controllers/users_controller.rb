@@ -40,15 +40,16 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:name, :email, :password,
+      params.require(:user).permit(:name, :email, :password, :photo_url,
                                    :password_confirmation, :description)
     end
     
     def user_params_update(user)
       if user.permission_level != 1
-        params.require(:user).permit(:name, :description)
+        params.require(:user).permit(:name, :description, :photo_url)
       else
-        params.require(:user).permit(:name, :description, :permission_level)
+        params.require(:user).permit(:name, :description, :photo_url,
+                                     :permission_level)
       end
     end
     
