@@ -23,7 +23,7 @@ class Bar < ActiveRecord::Base
   private
   
     def bar_photo_exists
-      unless BarPhoto.exists?(cover)
+      unless cover.nil? || BarPhoto.exists?(cover)
         errors.add(:cover, "does not exist")
       end
     end
