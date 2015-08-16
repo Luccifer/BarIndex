@@ -6,7 +6,6 @@ class BarPhoto < ActiveRecord::Base
   validates :url, presence: true
   validates :bar_id, presence: true
   validate  :picture_size
-
   
   private
   

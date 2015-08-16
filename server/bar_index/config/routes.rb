@@ -47,4 +47,7 @@ Rails.application.routes.draw do
   put    'api/evaluations/:id'                => 'evaluations#update'
   get    'api/evaluations/:id'                => 'evaluations#show'
   
+  resources :bar_photos
+  get 'test' => 'bar_photos#new'
+  
 end

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Bar Index</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<body>
+    <%= form_for(@bar_photo, html: { multipart: true }) do |f| %>
+      <div class="field">
+      <%= f.text_area :bar_id, placeholder: "bar_id..." %>
+      </div>
+      <%= f.submit "Post", class: "btn btn-primary" %>
+      <span class="picture">
+      <%= f.file_field :url %>
+      </span>
+    <% end %>
+</body>
+</html>
