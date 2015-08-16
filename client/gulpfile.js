@@ -13,6 +13,7 @@ var vendor_js = [
     './node_modules/angular/angular.js',
     './node_modules/angular-ui-router/build/angular-ui-router.min.js',
     './node_modules/restangular/dist/restangular.min.js'
+    //'./node_modules/ng-file-upload/dist/ng-file-upload.min.js'
 ];
 var source_js = [
     './source/app/**/init.js',
@@ -90,7 +91,7 @@ gulp.task('styles', ['vendor_styles_css'], function () {
 gulp.task('build', ['templates', 'scripts', 'styles', 'index', 'assets', 'fonts']);
 gulp.task('scripts', ['vendor_scripts', 'source_scripts']);
 
-var api_endpoints = ['api'];
+var api_endpoints = ['api', 'uploads'];
 var backend_url = 'http://avkorneenkov.net/';
 
 gulp.task('run', ['build', 'watch'], function() {

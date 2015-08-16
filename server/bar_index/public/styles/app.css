@@ -9,6 +9,20 @@ html,
 body {
   height: 100%;
 }
+body ::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0.5em;
+}
+body ::-webkit-scrollbar-thumb {
+  background: #464055;
+}
+body ::-webkit-scrollbar-track {
+  background: #a39faa;
+}
+body body {
+  scrollbar-face-color: #464055;
+  scrollbar-track-color: #a39faa;
+}
 .common_logo {
   font-family: neonFont, 'helvetica', arial, sans-serif;
   color: #dcb656;
@@ -21,6 +35,10 @@ body {
 a {
   text-decoration: none;
   color: #100f14;
+}
+h1 {
+  padding: 0.5em;
+  margin: 0;
 }
 h2 {
   margin: 0.4em 0;
@@ -207,6 +225,71 @@ header > * {
   background-color: #221f29;
   pointer-events: none;
 }
+.common-section-header {
+  background-color: #3a3546;
+  color: #dcb656;
+}
+.common-section-header > span {
+  font-size: small;
+}
+.common-section-header > span:hover {
+  color: #5dc6e0;
+}
+.common-bar-cover {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  background: white center / cover;
+}
+.common-bar-price {
+  background-color: #3a3546;
+}
+.common-bar-price > div {
+  border-right: 1px solid #524b63;
+  margin-right: -1px;
+}
+.common-bar-price > div:last-child {
+  border-right: none;
+}
+.common-bar-price > div > p:first-child {
+  color: #5dc6e0;
+}
+.common-bar-price > div > p:last-child {
+  color: #dcb656;
+}
+.common-bar-evals {
+  background-color: #e5c880;
+}
+.common-bar-evals > div {
+  padding: 15px;
+  border-bottom: 1px dashed #9e97b0;
+}
+.common-bar-address {
+  background-color: #3a3546;
+  color: #5dc6e0;
+  text-align: center;
+  padding: 15px 0;
+}
+.common-bar-map {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  background: white center / cover;
+}
+.common-bar-description {
+  margin: 10px;
+  padding: 10px;
+  background-color: #9e97b0;
+  text-align: center;
+}
+.common-bar-album .container > * {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  display: inline-block;
+  white-space: nowrap;
+  background: white center / cover;
+}
 .admin-barlist-wrapper {
   position: absolute;
   bottom: 0;
@@ -219,6 +302,19 @@ header > * {
   position: absolute;
   bottom: 0;
   top: 0;
+}
+.admin-bar-photoset > * {
+  height: 20vh;
+  min-height: 150px;
+  display: inline-block;
+  padding: 10px;
+  background-color: #3a3546;
+}
+.admin-bar-photoset .cover {
+  background-color: #dcb656;
+}
+.admin-bar-photoset .selected {
+  background-color: #5dc6e0;
 }
 .common-door-loginview input,
 .common-door-loginview button {

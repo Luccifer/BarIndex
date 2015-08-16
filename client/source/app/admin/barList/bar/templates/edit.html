@@ -1,0 +1,92 @@
+<h1 class="common-section-header">Редактировать бар</h1>
+<h2>Общая информация</h2>
+<div class="pure-g">
+    <form class="pure-form pure-form-aligned pure-u-1 pure-u-sm-1-2">
+        <fieldset>
+
+            <div class="pure-control-group">
+                <label for="name">Название бара</label>
+                <input id="name" type="text" placeholder="Название" ng-model="ctrl.common.name">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="description">Описание</label>
+                <textarea id='description' placeholder="Описание" ng-model="ctrl.common.description"></textarea>
+            </div>
+
+            <div class="pure-control-group">
+                <label for="address">Адрес бара</label>
+                <input id="address" type="text" placeholder="Адрес" ng-model="ctrl.common.address">
+            </div>
+            <div class="pure-control-group">
+                <label>&nbsp;</label>
+                <button type="submit" class="pure-button button-primary" ng-click="ctrl.onAddressCheck()">Проверить</button>
+            </div>
+
+            <div class="pure-controls">
+                <label>&nbsp;</label>
+                <button type="submit" class="pure-button button-primary" ng-click="ctrl.commonUpdate()">Обновить</button>
+            </div>
+
+        </fieldset>
+    </form>
+    <div id="admin-map" class="pure-u-1 pure-u-sm-1-2"></div>
+</div>
+
+<h2>Цены</h2>
+<div class="pure-g">
+    <form class="pure-form pure-form-aligned pure-u-1 pure-u-sm-1-2">
+        <fieldset>
+
+            <div class="pure-control-group">
+                <label for="price_1">Цена водки</label>
+                <input id="price_1" type="number" placeholder="Цена" ng-model="ctrl.price.price_vodka">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="price_2">Цена шота</label>
+                <input id="price_2" type="number" placeholder="Цена" ng-model="ctrl.price.price_shot">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="price_3">Цена лонга</label>
+                <input id="price_3" type="number" placeholder="Цена" ng-model="ctrl.price.price_long">
+            </div>
+
+            <div class="pure-controls">
+                <label>&nbsp;</label>
+                <button type="submit" class="pure-button button-primary" ng-click="ctrl.priceUpdate()">Обновить</button>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<h2>Фотографии</h2>
+<div class="pure-g">
+    <form class="pure-form pure-form-aligned pure-u-1 pure-u-sm-1-2">
+        <fieldset>
+
+            <div class="pure-control-group">
+                <label for="photo">Фотография</label>
+                <input id="photo" type="text" placeholder="Url" ng-model="ctrl.photos.newPhotoUrl">
+            </div>
+            <div class="pure-control-group">
+                <label>&nbsp;</label>
+                <button type="submit" class="pure-button button-primary" ng-click="ctrl.addPhoto()">Загрузить</button>
+            </div>
+
+
+            <div class="pure-controls">
+                <label>&nbsp;</label>
+                <button type="submit" class="pure-button button-primary" ng-click="ctrl.coverUpdate()">Сделать обложкой</button>
+            </div>
+
+        </fieldset>
+    </form>
+    <div class="admin-bar-photoset pure-u-1">
+        <img class="pure-img" src="{{photo.url.url}}" ng-repeat="photo in ctrl.photos.album" ng-click="ctrl.setCoverCandidate(photo)"
+             ng-class="{cover: photo.id === ctrl.originalBar.cover, selected: photo.id === ctrl.photos.cover}"/>
+    </div>
+</div>
+</div>

@@ -18,8 +18,9 @@
             model: api_endpoint,
             list: [],
             updateList: updateList,
-            photos: function(id){
-                return api_endpoint.one(id).one('photos');
+            photos: Restangular.all('api').one('bar_photos'),
+            getPhotos: function(bar_id){
+                return api_endpoint.one(''+bar_id).one('photos');
             },
             comments: function(id){
                 return api_endpoint.one(id).one('comments');

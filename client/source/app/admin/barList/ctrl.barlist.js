@@ -15,7 +15,23 @@
         BarResource.updateList();
         $scope.$on('BarResource:updated', function(e, data){
             self.bars = data;
+            setCovers();
         });
+
+        function setCovers(){
+            for (var key in self.bars){
+                var bar = self.bars[key];
+                setCover(bar);
+            }
+        }
+        function setCover(bar){
+            console.log('hello');
+            if (bar.cover === null) return;
+            BarResource.photos.one(''+bar.cover).get().then(function(data){
+                console.log(data.plain());
+                bar.coverUrl = data.url.url;
+            });
+        }
 
         function isAddActive(){
             return $state.current.name === 'admin.bars.addBar';
@@ -24,7 +40,7 @@
             $state.go('admin.bars.bar',{id:id});
         }
         function barAdd(){
-            $state.go('admin.bars.addBar');
+            $state.go('admin.bars.add');
         }
 
         function barActive(item){
