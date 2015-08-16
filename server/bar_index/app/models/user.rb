@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
     
     # Validates the size of an uploaded picture.
     def picture_size
-      if url.size > 5.megabytes
+      if photo_url.size > 5.megabytes
         errors.add(:photo_url, "should be less than 5MB")
       end
     end
