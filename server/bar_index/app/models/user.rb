@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :evaluations, dependent: :destroy
   
+  mount_uploader :photo_url, BarPhotoUploader
+  
   VALID_EMAIL_REGEX =  /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   
   attr_accessor :remember_token, :activation_token, :reset_token
@@ -15,6 +17,7 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6, maximum: 255 }, allow_blank: true
+  validate  :picture_size
   has_secure_password
   
   # Returns the hash digest of the given string
@@ -92,6 +95,13 @@ class User < ActiveRecord::Base
     def create_activation_digest
       self.activation_token = User.new_token
       self.activation_digest = User.digest(activation_token)
+    end
+    
+    # Validates the size of an uploaded picture.
+    def picture_size
+      if photo_url.size > 5.megabytes
+        errors.add(:photo_url, "should be less than 5MB")
+      end
     end
     
 end

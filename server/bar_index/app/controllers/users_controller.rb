@@ -13,7 +13,14 @@ class UsersController < ApplicationController
   end
   
   def create
-    user = User.new(user_params)
+    photo_url_remote = params[:user][:photo_url_remote]
+    if photo_url_remote.blank?
+      user = User.new(user_params true)
+    else
+      user = User.new(user_params false)
+      user.remote_photo_url_url = photo_url_remote
+    end
+    
     if user.save
       user.activate # TODO: remove
       user.send_activation_email
@@ -30,7 +37,11 @@ class UsersController < ApplicationController
   
   def update
     user = User.find(params[:id])
-    if user.update_attributes(user_params_update(user))
+    
+    photo_url_remote = params[:user][:photo_url_remote]
+    user.remote_photo_url_url = photo_url_remote unless photo_url_remote.blank?
+    
+    if user.update_attributes(user_params_update photo_url_remote.blank?)
       render json: user.to_json
     else
       render json: { error: user.errors.full_messages }
@@ -39,16 +50,30 @@ class UsersController < ApplicationController
   
   private
   
-    def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation, :description)
+    def user_params(get_file)
+      if get_file
+        params.require(:user).permit(:name, :email, :password, :photo_url,
+                                     :password_confirmation, :description)
+      else
+        params.require(:user).permit(:name, :email, :password,
+                                     :password_confirmation, :description)
+      end
     end
     
-    def user_params_update(user)
-      if user.permission_level != 1
-        params.require(:user).permit(:name, :description)
+    def user_params_update(get_file)
+      if get_file
+        if current_user.permission_level != 1
+          params.require(:user).permit(:name, :description, :photo_url)
+        else
+          params.require(:user).permit(:name, :description, :photo_url,
+                                       :permission_level)
+        end
       else
-        params.require(:user).permit(:name, :description, :permission_level)
+        if current_user.permission_level != 1
+          params.require(:user).permit(:name, :description)
+        else
+          params.require(:user).permit(:name, :description, :permission_level)
+        end
       end
     end
     

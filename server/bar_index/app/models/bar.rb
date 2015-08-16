@@ -9,6 +9,7 @@ class Bar < ActiveRecord::Base
   # validates :price_vodka, presence: true
   # validates :price_long, presence: true
   # validates :price_shot, presence: true
+  validate :bar_photo_exists
   
   # before_save :set_price_avg
 
@@ -18,5 +19,13 @@ class Bar < ActiveRecord::Base
     # TODO: actually implement this
     self.price_avg = (price_shot + price_long + price_vodka) / 3
   end
+  
+  private
+  
+    def bar_photo_exists
+      unless cover.nil? || BarPhoto.exists?(cover)
+        errors.add(:cover, "does not exist")
+      end
+    end
   
 end
