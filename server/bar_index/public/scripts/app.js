@@ -505,6 +505,11 @@
         self.priceUpdate = priceUpdate;
         self.coverUpdate = coverUpdate;
         self.addPhoto = addPhoto;
+        self.isCommonUpdateDisabled = isCommonUpdateDisabled;
+        self.isPriceUpdateDisabled = isPriceUpdateDisabled;
+        self.isCoverUpdateDisabled = isCoverUpdateDisabled;
+        self.isAddPhotoDisabled = isAddPhotoDisabled;
+
         self.onAddressCheck = codeAddress;
         self.setCoverCandidate = setCoverCandidate;
 
@@ -541,24 +546,53 @@
         }
 
 
-
+        function isCommonUpdateDisabled(){
+            var flag = true;
+            var data = self.common;
+            for (var key in data){
+                if (self.originalBar[key] !== undefined && self.originalBar[key] !== data[key]){
+                    flag = false;
+                }
+            }
+            return flag;
+        }
         function commonUpdate(){
+            if (isCommonUpdateDisabled()) return;
             if(prepareUpdate(self.common)){
                 self.originalBar.put().then(BarResource.updateList());
             }
         }
+        function isPriceUpdateDisabled(){
+            var flag = true;
+            var data = self.price;
+            for (var key in data){
+                if (self.originalBar[key] !== undefined && self.originalBar[key] !== data[key]){
+                    flag = false;
+                }
+            }
+            return flag;
+        }
         function priceUpdate(){
+            if (isPriceUpdateDisabled()) return;
             if(prepareUpdate(self.price)){
                 self.originalBar.put().then(BarResource.updateList());
             }
         }
+        function isCoverUpdateDisabled(){
+            return (self.originalBar.cover === self.photos.cover);
+        }
         function coverUpdate(){
+            if (isCoverUpdateDisabled()) return;
             console.log(self.photos);
             if(prepareUpdate(self.photos)){
                 self.originalBar.put().then(BarResource.updateList());
             }
         }
+        function isAddPhotoDisabled(){
+            return (self.photos.newPhotoUrl === "" || self.photos.newPhotoUrl === null);
+        }
         function addPhoto(){
+            if (isAddPhotoDisabled()) return;
             var data = {bar_photo:{
                 bar_id: self.barId,
                 url_remote: self.photos.newPhotoUrl
@@ -566,6 +600,7 @@
             console.log(data);
             BarResource.photos.customPOST(data).then(function(data){
                 console.log(data.plain());
+                self.photos.newPhotoUrl = null;
                 self.photos.updateAlbum();
             });
         }

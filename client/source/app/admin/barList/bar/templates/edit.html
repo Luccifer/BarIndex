@@ -25,7 +25,7 @@
 
             <div class="pure-controls">
                 <label>&nbsp;</label>
-                <button type="submit" class="pure-button button-primary" ng-click="ctrl.commonUpdate()">Обновить</button>
+                <button type="submit" class="pure-button button-primary" ng-click="ctrl.commonUpdate()" ng-disabled="ctrl.isCommonUpdateDisabled()">Сохранить</button>
             </div>
 
         </fieldset>
@@ -55,7 +55,7 @@
 
             <div class="pure-controls">
                 <label>&nbsp;</label>
-                <button type="submit" class="pure-button button-primary" ng-click="ctrl.priceUpdate()">Обновить</button>
+                <button type="submit" class="pure-button button-primary" ng-click="ctrl.priceUpdate()" ng-disabled="ctrl.isPriceUpdateDisabled()">Сохранить</button>
             </div>
 
         </fieldset>
@@ -73,13 +73,13 @@
             </div>
             <div class="pure-control-group">
                 <label>&nbsp;</label>
-                <button type="submit" class="pure-button button-primary" ng-click="ctrl.addPhoto()">Загрузить</button>
+                <button type="submit" class="pure-button button-primary" ng-click="ctrl.addPhoto()" ng-disabled="ctrl.isAddPhotoDisabled()">Загрузить</button>
             </div>
 
 
             <div class="pure-controls">
                 <label>&nbsp;</label>
-                <button type="submit" class="pure-button button-primary" ng-click="ctrl.coverUpdate()">Сделать обложкой</button>
+                <button type="submit" class="pure-button button-primary" ng-click="ctrl.coverUpdate()" ng-disabled="ctrl.isCoverUpdateDisabled()">Сделать обложкой</button>
             </div>
 
         </fieldset>
