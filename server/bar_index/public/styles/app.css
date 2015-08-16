@@ -145,18 +145,6 @@ header > * {
   left: 0;
   right: 0;
 }
-.admin-section {
-  position: absolute;
-  top: 68px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-#admin-map {
-  min-height: 300px;
-  height: 100%;
-  position: fixed;
-}
 .common-barlist-wrapper {
   background-color: #3a3546;
   color: #5dc6e0;
@@ -290,6 +278,25 @@ header > * {
   white-space: nowrap;
   background: white center / cover;
 }
+.admin-section {
+  position: absolute;
+  top: 68px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+#admin-map {
+  min-height: 300px;
+  height: 100%;
+  position: fixed;
+}
+.common-door-loginview input,
+.common-door-loginview button {
+  margin: 5px 0!important;
+}
+.common-door-loginview button {
+  margin: 5px 10px!important;
+}
 .admin-barlist-wrapper {
   position: absolute;
   bottom: 0;
@@ -315,11 +322,4 @@ header > * {
 }
 .admin-bar-photoset .selected {
   background-color: #5dc6e0;
-}
-.common-door-loginview input,
-.common-door-loginview button {
-  margin: 5px 0!important;
-}
-.common-door-loginview button {
-  margin: 5px 10px!important;
 }

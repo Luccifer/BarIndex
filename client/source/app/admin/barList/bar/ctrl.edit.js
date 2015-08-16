@@ -27,6 +27,7 @@
         self.commonUpdate = commonUpdate;
         self.priceUpdate = priceUpdate;
         self.coverUpdate = coverUpdate;
+        self.removePhoto = removePhoto;
         self.addPhoto = addPhoto;
         self.isCommonUpdateDisabled = isCommonUpdateDisabled;
         self.isPriceUpdateDisabled = isPriceUpdateDisabled;
@@ -36,14 +37,22 @@
         self.onAddressCheck = codeAddress;
         self.setCoverCandidate = setCoverCandidate;
 
+        function removePhoto(){
+            BarResource.photos.one(''+self.photos.cover).remove().then(function(){
+                updateAlbum();
+                self.photos.cover = null;
+            });
+            //updateAlbum();
+        }
+
         function setCoverCandidate(photo){
             self.photos.cover = photo.id;
+            self.photos.selected = photo;
         }
 
         function updateAlbum(){
             BarResource.getPhotos(self.barId).get().then(function(data){
-                self.photos.album = data.plain();
-                console.log(self.photos.album);
+                self.photos.album = data;
             });
         }
 
@@ -108,7 +117,10 @@
             if (isCoverUpdateDisabled()) return;
             console.log(self.photos);
             if(prepareUpdate(self.photos)){
-                self.originalBar.put().then(BarResource.updateList());
+                self.originalBar.put().then(function(){
+                    BarResource.updateList();
+                    self.photos.cover = null;
+                });
             }
         }
         function isAddPhotoDisabled(){
